@@ -44,20 +44,42 @@ function useGetItems(maxItems: number) {
   }
 
   function nextPage() {
+    if (page === Math.floor(items.length / maxItems) - 1) {
+      return;
+    }
+
     setPage(page + 1);
   }
 
   function prevPage() {
+    if (page === 0) {
+      return;
+    }
+
     setPage(page - 1);
   }
 
   function resetPageStates() {
+    const newItems = [...items];
+
     for (let i = page * maxItems; i < page * maxItems + maxItems; i++) {
-      items[i].isDone = false;
+      newItems[i].isDone = false;
     }
+
+    setItems(newItems);
   }
 
-  return { data: items.slice(page * maxItems, page * maxItems + maxItems), isLoading, isError, checkItem, nextPage, prevPage, resetPageStates, setItems };
+  return {
+    data: items.slice(page * maxItems, page * maxItems + maxItems),
+    isLoading,
+    isError,
+    checkItem,
+    nextPage,
+    prevPage,
+    resetPageStates,
+    isLastPage: page === Math.floor(items.length / maxItems) - 1,
+    isFirstPage: page === 0
+  };
 }
 
 export default useGetItems;
