@@ -13,7 +13,7 @@ function Title({ total, completed }: TitleProps) {
         {completed} of {total} complete
       </span>
       <Progress
-        value={total / completed}
+        value={(completed / total) * 100}
         className="absolute bottom-0 left-0 right-0"
       />
     </header>
