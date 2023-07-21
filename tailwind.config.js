@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   presets: [],
   darkMode: "media", // or 'class'
   theme: {
@@ -163,6 +163,17 @@ export default {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
+      primary: {
+        50: "hsl(291,100%,100%)",
+        100: "hsl(291,100%,97%)",
+        200: "hsl(290,100%,95%)",
+        300: "hsl(291,95%,92%)",
+        400: "hsl(291,93%,89%)",
+        500: "hsl(291,93%,83%)",
+        600: "hsl(295,93%,78%)",
+        700: "hsl(295,93%,72%)",
+        800: "hsl(295,70%,55%)",
+      },
     }),
     columns: {
       auto: "auto",
